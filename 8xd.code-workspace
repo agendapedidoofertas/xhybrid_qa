@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "name": "xhybrid_site",
+      "path": "../xhybrid_site"
+    },
+    {
+      "name": "crm_software",
+      "path": "../crm_software"
+    },
+    {
+      "name": "xhybrid_qa",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/logs/*.md": false
+    }
+  }
+}

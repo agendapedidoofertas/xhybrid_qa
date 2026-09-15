@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Config local (se divergir do example)
+config.local.php
+config.php
+
+# Credenciais / overrides
+secrets.php
+playwright/.env
+
+# Logs gerados
+logs/*
+!logs/.gitkeep
+
+# Playwright
+playwright/node_modules/
+playwright/test-results/
+playwright/playwright-report/
+playwright/blob-report/
+playwright/.auth/
+
