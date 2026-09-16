@@ -122,8 +122,9 @@ test.describe('C) Três leads QA_* CRM → ativar → público → cleanup', () 
       const body = await page.locator('body').innerText();
       expect(body.toLowerCase()).not.toContain('fatal');
 
-      // link público — tenta achar link com /xhybrid_site/ ou path /slug/
-      const publicLink = page.locator(`a[href*="/xhybrid_site/"]`).first();
+      // link público na raiz do domínio (ou legado /xhybrid_site)
+      const publicLink = page.locator('a[href*="8xd.com.br/"]').filter({ hasNotText: 'admin' }).first();
+      const legacyLink = page.locator('a[href*="/xhybrid_site/"]').first();
       if (await publicLink.count()) {
         const href = await publicLink.getAttribute('href');
         expect(href).toBeTruthy();
@@ -131,6 +132,10 @@ test.describe('C) Três leads QA_* CRM → ativar → público → cleanup', () 
         expect(res.status()).toBeLessThan(400);
         const html = (await res.text()).toLowerCase();
         expect(html).not.toContain('esse link saiu do ar');
+      } else if (await legacyLink.count()) {
+        const href = await legacyLink.getAttribute('href');
+        const res = await page.request.get(href.startsWith('http') ? href : `https://8xd.com.br${href}`);
+        expect(res.status()).toBeLessThan(400);
       } else {
         // fallback: busca na página por padrão letra+id
         const slugMatch = body.match(/\/([a-z0-9-]+)\/([a-z]\d+)/i);

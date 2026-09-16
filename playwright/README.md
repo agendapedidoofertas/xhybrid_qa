@@ -36,13 +36,19 @@ npm run test:headed
 
 Modelo sem senha: `.env.example` (pode ir pro Git).
 
+## URLs
+
+- Site: `https://8xd.com.br`
+- CRM: `https://crm.8xd.com.br/admin`
+- Lead smoke: `https://8xd.com.br/eletricistaton/x22`
+
 ## Cobertura atual
 
 1. Site público (home, páginas, assets)
-2. Lead `solusempreiteira/v21`
+2. Lead `eletricistaton/x22`
 3. Admin site / CRM sem sessão
 4. Bloqueio `data/*.sqlite`
-5. Apex / subdomínio (infra)
+5. Apex + `crm.8xd.com.br`
 6. Login (grupo 7 smoke)
 7. **e2e-logged:** menus logados, contato QA_TEST revertido, 3 leads QA, user QA, Places PENDING, planos
 

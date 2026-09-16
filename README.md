@@ -3,15 +3,16 @@
 Pasta **à parte** dos repos `xhybrid_site` e `crm_software`.  
 Não altera o código de produção; só lê URLs / SQLite locais e gera logs.
 
-## URLs atuais (Hostgator — layout em subpasta)
+## URLs alvo (Hostgator)
 
-| Papel | URL | Status esperado |
-|-------|-----|-----------------|
-| Site (app) | https://8xd.com.br/xhybrid_site/ | OK |
-| Admin site | https://8xd.com.br/xhybrid_site/admin/ | OK (login/setup) |
-| Admin CRM | https://8xd.com.br/crm_software/admin/ | OK (login/setup) |
-| Apex | https://8xd.com.br | **ainda NÃO** é o Xhybrid |
-| CRM subdomínio | https://crm.8xd.com.br | **ainda NÃO** ativo |
+| Papel | URL |
+|-------|-----|
+| Site (apex) | https://8xd.com.br/ |
+| Admin site | https://8xd.com.br/admin/ |
+| Lead | https://8xd.com.br/{slug}/{letra}{id} |
+| Admin CRM | https://crm.8xd.com.br/admin/ |
+
+Deploy: pasta irmã `deploy_hostgator/` + `xhybrid_site/docs/deploy-hostgator.md`.
 
 ## Config
 
@@ -20,19 +21,22 @@ copy config.example.php config.php
 # ajuste paths locais se necessário
 ```
 
-`config.php` é gitignored.
+`config.php` é gitignored (default: `require config.example.php`).
 
 ## Rodar
 
-```bash
-cd xhybrid_qa
+```powershell
+cd C:\Users\Bosco\Documents\GitHub\xhybrid_qa
 php php/smoke_http.php      # varredura HTTP (produção)
 php php/qa_roundtrip.php    # sync CRM↔site no SQLite local
 php php/run_all.php         # os dois + resumo
+
+cd playwright
+npm.cmd run test:headed     # smoke + e2e (credenciais em .env)
 ```
 
-Logs em `logs/qa-YYYYMMDD-HHMMSS.md`.
+Logs em `logs/`.
 
-## Workspace
+## Nota
 
-Abra o multi-root `8xd.code-workspace` (três pastas: site, CRM, QA).
+Até o cPanel apontar DocumentRoot + subdomínio + configs `data/`, o smoke HTTP pode falhar — isso é esperado. Siga o checklist em `deploy_hostgator/CHECKLIST-CPANEL.md`.

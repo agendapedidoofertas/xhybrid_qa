@@ -1,27 +1,31 @@
-# Alterações / pendências de infra (varredura)
+# Pendências de infra
 
-Atualizado com o layout real informado:
+Layout **alvo** (já refletido em `config.example.php` e Playwright):
 
-| Item | Hoje | Alvo futuro |
-|------|------|-------------|
-| App Xhybrid | `https://8xd.com.br/xhybrid_site/` | `https://8xd.com.br/` (DocumentRoot) |
-| Admin site | `https://8xd.com.br/xhybrid_site/admin/` | `https://8xd.com.br/admin/` |
-| Admin CRM | `https://8xd.com.br/crm_software/admin/` | `https://crm.8xd.com.br/admin/` |
-| Apex `8xd.com.br` | Ainda **não** é o app | Apontar DocumentRoot / mover conteúdo |
-| `crm.8xd.com.br` | Ainda **não** ativo | Subdomínio → pasta CRM |
+| Item | URL |
+|------|-----|
+| App Xhybrid | `https://8xd.com.br/` |
+| Admin site | `https://8xd.com.br/admin/` |
+| Admin CRM | `https://crm.8xd.com.br/admin/` |
+
+## O que ainda é trabalho no cPanel (não no código)
+
+1. Document Root de `8xd.com.br` = pasta do Xhybrid  
+2. Subdomínio `crm` → pasta do CRM + SSL  
+3. Copiar configs de `deploy_hostgator/site-data` e `crm-data`  
+4. Remover `app_base_path.php` com `'/xhybrid_site'` se existir  
+5. Reativar um lead e conferir URL na raiz  
+
+Guia: `../deploy_hostgator/CHECKLIST-CPANEL.md` e `../xhybrid_site/docs/deploy-hostgator.md`.
 
 ## Como ler os logs
 
-1. Rodar `php php/run_all.php`
+1. `php php/run_all.php` ou `php php/smoke_http.php`
 2. Abrir o `.md` mais recente em `logs/`
-3. **FAIL** = consertar
-4. **PENDING** = esperado por enquanto (apex/subdomínio) ou precisa checagem manual
-5. **OK** = passou
+3. **FAIL** = consertar no servidor/config  
+4. **PENDING** = legado `/xhybrid_site` ainda vivo, ou lead inativo  
+5. **OK** = passou  
 
-## Próximos testes (Playwright — pasta vazia)
+## Playwright
 
-Quando quiser UI logada (CRUD aparência campo a campo na tela):
-
-- `playwright/` — login admin site + CRM, salvar, reload, assert
-
-Por enquanto a varredura geral é HTTP + roundtrip SQLite.
+Ver `playwright/README.md`. Credenciais em `playwright/.env` (gitignored).

@@ -1,8 +1,9 @@
 const { expect } = require('@playwright/test');
 
-const SITE = 'https://8xd.com.br/xhybrid_site';
+/** Layout alvo: apex = site, CRM = subdomínio */
+const SITE = 'https://8xd.com.br';
 const SITE_ADMIN = `${SITE}/admin`;
-const CRM_ADMIN = 'https://8xd.com.br/crm_software/admin';
+const CRM_ADMIN = 'https://crm.8xd.com.br/admin';
 
 async function pause(page, ms = 400) {
   await page.waitForTimeout(ms);
@@ -36,16 +37,13 @@ async function loginCrm(page) {
   await expect(page).not.toHaveURL(/login\.php$/);
 }
 
-async function assertAdminPageOk(page, url, titleHint = '') {
+async function assertAdminPageOk(page, url) {
   const res = await page.goto(url, { waitUntil: 'domcontentloaded' });
   expect(res?.status() ?? 0, url).toBeLessThan(500);
   await expect(page.locator('body')).toBeVisible();
   const body = (await page.locator('body').innerText()).toLowerCase();
   expect(body).not.toContain('fatal error');
   expect(body).not.toContain('uncaught');
-  if (titleHint) {
-    // soft: page may vary
-  }
   await pause(page, 350);
 }
 
