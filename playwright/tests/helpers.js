@@ -2,8 +2,8 @@ const { expect } = require('@playwright/test');
 
 /** Layout alvo: apex = site, CRM = subdomínio */
 const SITE = 'https://8xd.com.br';
-const SITE_ADMIN = `${SITE}/admin`;
-const CRM_ADMIN = 'https://crm.8xd.com.br/admin';
+const SITE_ADMIN = `${SITE}/adminn`;
+const CRM_ADMIN = 'https://crm.8xd.com.br/adminn';
 
 async function pause(page, ms = 400) {
   await page.waitForTimeout(ms);

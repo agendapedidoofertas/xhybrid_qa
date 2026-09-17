@@ -122,9 +122,9 @@ test.describe('C) Três leads QA_* CRM → ativar → público → cleanup', () 
       const body = await page.locator('body').innerText();
       expect(body.toLowerCase()).not.toContain('fatal');
 
-      // link público na raiz do domínio (ou legado /xhybrid_site)
-      const publicLink = page.locator('a[href*="8xd.com.br/"]').filter({ hasNotText: 'admin' }).first();
+      const publicLink = page.locator('a[href*="8xd.com.br/"]').filter({ hasNotText: /adminn?/i }).first();
       const legacyLink = page.locator('a[href*="/xhybrid_site/"]').first();
+      // Preferir URL sem /adminn e sem /xhybrid_site
       if (await publicLink.count()) {
         const href = await publicLink.getAttribute('href');
         expect(href).toBeTruthy();

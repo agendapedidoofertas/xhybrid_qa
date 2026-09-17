@@ -8,9 +8,9 @@ Não altera o código de produção; só lê URLs / SQLite locais e gera logs.
 | Papel | URL |
 |-------|-----|
 | Site (apex) | https://8xd.com.br/ |
-| Admin site | https://8xd.com.br/admin/ |
+| Admin site | https://8xd.com.br/adminn/ |
 | Lead | https://8xd.com.br/{slug}/{letra}{id} |
-| Admin CRM | https://crm.8xd.com.br/admin/ |
+| Admin CRM | https://crm.8xd.com.br/adminn/ |
 
 Deploy: pasta irmã `deploy_hostgator/` + `xhybrid_site/docs/deploy-hostgator.md`.
 

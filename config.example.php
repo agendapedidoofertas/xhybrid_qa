@@ -25,8 +25,8 @@ return [
     'urls' => [
         'apex' => 'https://8xd.com.br',
         'site' => 'https://8xd.com.br',
-        'site_admin' => 'https://8xd.com.br/admin',
-        'crm_admin' => 'https://crm.8xd.com.br/admin',
+        'site_admin' => 'https://8xd.com.br/adminn',
+        'crm_admin' => 'https://crm.8xd.com.br/adminn',
         'crm_subdomain' => 'https://crm.8xd.com.br',
         // Lead de smoke (raiz do domínio — sem /xhybrid_site)
         'probe_lead' => 'eletricistaton/x22',

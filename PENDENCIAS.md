@@ -5,8 +5,8 @@ Layout **alvo** (já refletido em `config.example.php` e Playwright):
 | Item | URL |
 |------|-----|
 | App Xhybrid | `https://8xd.com.br/` |
-| Admin site | `https://8xd.com.br/admin/` |
-| Admin CRM | `https://crm.8xd.com.br/admin/` |
+| Admin site | `https://8xd.com.br/adminn/` |
+| Admin CRM | `https://crm.8xd.com.br/adminn/` |
 
 ## O que ainda é trabalho no cPanel (não no código)
 

@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const SITE = 'https://8xd.com.br';
-const SITE_ADMIN = `${SITE}/admin`;
-const CRM_ADMIN = 'https://crm.8xd.com.br/admin';
+const SITE_ADMIN = `${SITE}/adminn`;
+const CRM_ADMIN = 'https://crm.8xd.com.br/adminn';
 const LEAD = `${SITE}/eletricistaton/x22`;
 const CRM_SUB = 'https://crm.8xd.com.br';
 

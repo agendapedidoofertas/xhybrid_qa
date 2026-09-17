@@ -39,7 +39,8 @@ Modelo sem senha: `.env.example` (pode ir pro Git).
 ## URLs
 
 - Site: `https://8xd.com.br`
-- CRM: `https://crm.8xd.com.br/admin`
+- Site admin: `https://8xd.com.br/adminn`
+- CRM: `https://crm.8xd.com.br/adminn`
 - Lead smoke: `https://8xd.com.br/eletricistaton/x22`
 
 ## Cobertura atual

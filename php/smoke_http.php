@@ -152,7 +152,7 @@ if ($crmAdmin !== '') {
             }
         }
 
-        $crmBase = preg_replace('#/admin$#', '', $crmAdmin) ?: $crmAdmin;
+        $crmBase = preg_replace('#/adminn?$#', '', $crmAdmin) ?: $crmAdmin;
         $crmDb = qa_http_get($crmBase . '/data/crm.sqlite', array_merge($httpCfg, ['follow_redirects' => false]));
         if ($crmDb['error'] !== '') {
             qa_log($report, 'PENDING', 'crm.data_sqlite_blocked', $crmDb['error']);
@@ -173,6 +173,11 @@ if ($crmSub !== '') {
         qa_log($report, 'PENDING', 'crm.subdomain', 'crm_subdomain_ready=false');
     } elseif ($res['error'] !== '') {
         qa_log($report, 'FAIL', 'crm.subdomain', $res['error'] . ' — crie subdomínio no cPanel + SSL');
+    } elseif (in_array($res['status'], [200, 301, 302], true)) {
+        smoke_expect($report, 'crm.subdomain', $res, [200, 301, 302]);
+    } elseif ($res['status'] === 403) {
+        // Pasta CRM sem index na raiz — painel em /adminn (esperado no Hostgator)
+        qa_log($report, 'OK', 'crm.subdomain', 'HTTP 403 na / (use /adminn) → ' . $res['final_url']);
     } else {
         smoke_expect($report, 'crm.subdomain', $res, [200, 301, 302]);
     }
