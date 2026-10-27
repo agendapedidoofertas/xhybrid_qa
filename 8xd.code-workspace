@@ -11,6 +11,10 @@
     {
       "name": "xhybrid_qa",
       "path": "."
+    },
+    {
+      "name": "xhybrid_wa_bot",
+      "path": "../xhybrid_wa_bot"
     }
   ],
   "settings": {
