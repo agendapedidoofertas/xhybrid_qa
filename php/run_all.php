@@ -16,6 +16,7 @@ echo 'PHP: ' . $php . "\n";
 echo 'Root: ' . $root . "\n\n";
 
 $suites = [
+    'healthcheck'    => $root . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'healthcheck_monitor.php',
     'smoke_http'     => $root . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'smoke_http.php',
     'qa_roundtrip'   => $root . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'qa_roundtrip.php',
     'ai_agent_suite' => $root . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'test_ai_agent.php',
