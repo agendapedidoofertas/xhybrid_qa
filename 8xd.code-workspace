@@ -13,8 +13,8 @@
       "path": "."
     },
     {
-      "name": "xhybrid_wa_bot",
-      "path": "../xhybrid_wa_bot"
+      "name": "xhybrid_wa_aiorquestrator_bot",
+      "path": "../xhybrid_wa_aiorquestrator_bot"
     }
   ],
   "settings": {
